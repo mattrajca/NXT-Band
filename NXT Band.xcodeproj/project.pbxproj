@@ -246,7 +246,7 @@
 		C95CA43612FDB40B003DFA1B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Matt Rajca";
 			};
 			buildConfigurationList = C95CA43912FDB40B003DFA1B /* Build configuration list for PBXProject "NXT Band" */;
