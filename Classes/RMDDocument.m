@@ -138,10 +138,20 @@
 #pragma mark Note Controller
 
 - (void)addNotes:(NSArray *)notes {
-	[_file addNotes:notes];
-	[_file sortNotesByTimestamp];
-	
-	[_rollView reloadData];
+	[[self undoManager] groupUndoWithActionName:@"Add Notes" block:^(NSUndoManager *manager) {
+		
+		[_file addNotes:notes];
+		[_file sortNotesByTimestamp];
+		
+		NSIndexSet *set = [_file.notes indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+			return [notes containsObject:obj];
+		}];
+		
+		[[manager prepareWithInvocationTarget:self] removeNotesAtIndices:set withActionName:@"Delete Notes" updateUI:YES];
+		
+		[_rollView reloadData];
+		
+	}];
 	
 	[self checkForOverlappingNotes];
 }
