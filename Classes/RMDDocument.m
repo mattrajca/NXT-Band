@@ -13,6 +13,8 @@
 
 @interface RMDDocument ()
 
+- (void)setupRoll;
+
 - (BOOL)hasOverlappingNotes;
 
 @end
@@ -62,6 +64,10 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
 	[super windowControllerDidLoadNib:aController];
 	
+	[self setupRoll];
+}
+
+- (void)setupRoll {
 	CGFloat width = [_file totalDuration] / 10.0f + WIDTH_LEEWAY;
 	_rollView.frame = NSMakeRect(0.0f, 0.0f, width, NOTES * [MRPianoRollView noteLineHeight]);
 	
@@ -101,6 +107,8 @@
 		
 		return NO;
 	}
+	
+	[self setupRoll];
 	
 	return YES;
 }
