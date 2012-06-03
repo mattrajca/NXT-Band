@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'NXT Band' target in the 'NXT Band' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif

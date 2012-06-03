@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C90CA27812FDD55A0010A90B /* FreqTable.c in Sources */ = {isa = PBXBuildFile; fileRef = C90CA27612FDD5590010A90B /* FreqTable.c */; };
+		C926434814B92FE400EF9D57 /* RMDFile+Playback.m in Sources */ = {isa = PBXBuildFile; fileRef = C926434714B92FE400EF9D57 /* RMDFile+Playback.m */; };
+		C926434C14B9334400EF9D57 /* Play.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C926434B14B9334400EF9D57 /* Play.tiff */; };
+		C95CA44412FDB40B003DFA1B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95CA44312FDB40B003DFA1B /* Cocoa.framework */; };
+		C95CA46612FDBF71003DFA1B /* RMDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CA46512FDBF71003DFA1B /* RMDDocument.m */; };
+		C95CA46A12FDBFBC003DFA1B /* MRPianoRollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CA46912FDBFBC003DFA1B /* MRPianoRollView.m */; };
+		C95CA46C12FDC01E003DFA1B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95CA46B12FDC01E003DFA1B /* QuartzCore.framework */; };
+		C95CA46F12FDC0D3003DFA1B /* RMDFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CA46E12FDC0D3003DFA1B /* RMDFile.m */; };
+		C95CA47212FDC4F8003DFA1B /* RMDNote.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CA47112FDC4F8003DFA1B /* RMDNote.m */; };
+		C95CA48012FDCA23003DFA1B /* RMDDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95CA47A12FDCA23003DFA1B /* RMDDocument.xib */; };
+		C95CA48212FDCA23003DFA1B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95CA47E12FDCA23003DFA1B /* MainMenu.xib */; };
+		C95CA48512FDCA35003DFA1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C95CA48312FDCA35003DFA1B /* main.m */; };
+		C96B6A0312FF65470021CD2F /* ImportMIDIWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96B6A0112FF65470021CD2F /* ImportMIDIWindow.xib */; };
+		C96B6A0712FF6DBF0021CD2F /* ImportMIDIWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */; };
+		C96B6A0912FF741A0021CD2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */; };
+		C96E69C614EF41B900C5B823 /* NSUndoManager+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */; };
+		C98BEE9B12FDD9E400A5904C /* MRNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BEE9A12FDD9E400A5904C /* MRNoteView.m */; };
+		C9D355E912FF2D2C0085F367 /* KeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D355E812FF2D2C0085F367 /* KeyboardView.m */; };
+		C9D355EC12FF2D5C0085F367 /* KeyboardWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D355EB12FF2D5C0085F367 /* KeyboardWindowController.m */; };
+		C9D355EF12FF2DC60085F367 /* KeyboardWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D355ED12FF2DC60085F367 /* KeyboardWindow.xib */; };
+		C9D355F212FF2E180085F367 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D355F112FF2E180085F367 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C90CA27612FDD5590010A90B /* FreqTable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FreqTable.c; sourceTree = "<group>"; };
+		C90CA27712FDD5590010A90B /* FreqTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreqTable.h; sourceTree = "<group>"; };
+		C926434614B92FE400EF9D57 /* RMDFile+Playback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMDFile+Playback.h"; sourceTree = "<group>"; };
+		C926434714B92FE400EF9D57 /* RMDFile+Playback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RMDFile+Playback.m"; sourceTree = "<group>"; };
+		C926434B14B9334400EF9D57 /* Play.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play.tiff; sourceTree = "<group>"; };
+		C926436314BA663E00EF9D57 /* RMDFile+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMDFile+Private.h"; sourceTree = "<group>"; };
+		C95CA43F12FDB40B003DFA1B /* NXT Band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NXT Band.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C95CA44312FDB40B003DFA1B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C95CA44612FDB40B003DFA1B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C95CA44712FDB40B003DFA1B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C95CA44812FDB40B003DFA1B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C95CA46412FDBF71003DFA1B /* RMDDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDDocument.h; sourceTree = "<group>"; };
+		C95CA46512FDBF71003DFA1B /* RMDDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDDocument.m; sourceTree = "<group>"; };
+		C95CA46812FDBFBC003DFA1B /* MRPianoRollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRPianoRollView.h; sourceTree = "<group>"; };
+		C95CA46912FDBFBC003DFA1B /* MRPianoRollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRPianoRollView.m; sourceTree = "<group>"; };
+		C95CA46B12FDC01E003DFA1B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C95CA46D12FDC0D3003DFA1B /* RMDFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDFile.h; sourceTree = "<group>"; };
+		C95CA46E12FDC0D3003DFA1B /* RMDFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDFile.m; sourceTree = "<group>"; };
+		C95CA47012FDC4F8003DFA1B /* RMDNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDNote.h; sourceTree = "<group>"; };
+		C95CA47112FDC4F8003DFA1B /* RMDNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDNote.m; sourceTree = "<group>"; };
+		C95CA47B12FDCA23003DFA1B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RMDDocument.xib; sourceTree = "<group>"; };
+		C95CA47F12FDCA23003DFA1B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C95CA48312FDCA35003DFA1B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		C95CA48412FDCA35003DFA1B /* NXT_Band-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NXT_Band-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		C95CA48612FDCA43003DFA1B /* NXT_Band-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NXT_Band-Info.plist"; sourceTree = "<group>"; };
+		C96B6A0212FF65470021CD2F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ImportMIDIWindow.xib; sourceTree = "<group>"; };
+		C96B6A0512FF6DBF0021CD2F /* ImportMIDIWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportMIDIWindowController.h; sourceTree = "<group>"; };
+		C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportMIDIWindowController.m; sourceTree = "<group>"; };
+		C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C96E69C414EF41B900C5B823 /* NSUndoManager+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUndoManager+Blocks.h"; path = "Classes/NSUndoManager+Blocks.h"; sourceTree = "<group>"; };
+		C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUndoManager+Blocks.m"; path = "Classes/NSUndoManager+Blocks.m"; sourceTree = "<group>"; };
+		C98BEE9912FDD9E400A5904C /* MRNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNoteView.h; sourceTree = "<group>"; };
+		C98BEE9A12FDD9E400A5904C /* MRNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNoteView.m; sourceTree = "<group>"; };
+		C9D355E712FF2D2C0085F367 /* KeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardView.h; sourceTree = "<group>"; };
+		C9D355E812FF2D2C0085F367 /* KeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardView.m; sourceTree = "<group>"; };
+		C9D355EA12FF2D5C0085F367 /* KeyboardWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardWindowController.h; sourceTree = "<group>"; };
+		C9D355EB12FF2D5C0085F367 /* KeyboardWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardWindowController.m; sourceTree = "<group>"; };
+		C9D355EE12FF2DC60085F367 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/KeyboardWindow.xib; sourceTree = "<group>"; };
+		C9D355F012FF2E180085F367 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9D355F112FF2E180085F367 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9E89A2114B5394B0071074B /* MRNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNote.h; sourceTree = "<group>"; };
+		C9FFFB2C1399984D0040A567 /* MRPianoRollView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRPianoRollView+Private.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C95CA43C12FDB40B003DFA1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C96B6A0912FF741A0021CD2F /* AudioToolbox.framework in Frameworks */,
+				C95CA44412FDB40B003DFA1B /* Cocoa.framework in Frameworks */,
+				C95CA46C12FDC01E003DFA1B /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C926434A14B9332200EF9D57 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				C926434B14B9334400EF9D57 /* Play.tiff */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		C95CA43412FDB40B003DFA1B = {
+			isa = PBXGroup;
+			children = (
+				C96E69C214EF419900C5B823 /* Additions */,
+				C9D355E512FF2C660085F367 /* Core */,
+				C9D355E612FF2C7A0085F367 /* UI */,
+				C95CA44A12FDB40B003DFA1B /* Supporting Files */,
+				C95CA47912FDCA22003DFA1B /* Resources */,
+				C95CA44212FDB40B003DFA1B /* Frameworks */,
+				C95CA44012FDB40B003DFA1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C95CA44012FDB40B003DFA1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C95CA43F12FDB40B003DFA1B /* NXT Band.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C95CA44212FDB40B003DFA1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */,
+				C95CA44312FDB40B003DFA1B /* Cocoa.framework */,
+				C95CA46B12FDC01E003DFA1B /* QuartzCore.framework */,
+				C95CA44512FDB40B003DFA1B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C95CA44512FDB40B003DFA1B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C95CA44612FDB40B003DFA1B /* AppKit.framework */,
+				C95CA44712FDB40B003DFA1B /* CoreData.framework */,
+				C95CA44812FDB40B003DFA1B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C95CA44A12FDB40B003DFA1B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C95CA48312FDCA35003DFA1B /* main.m */,
+				C95CA48412FDCA35003DFA1B /* NXT_Band-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			path = "NXT Band";
+			sourceTree = "<group>";
+		};
+		C95CA47912FDCA22003DFA1B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C926434A14B9332200EF9D57 /* Icons */,
+				C96B6A0112FF65470021CD2F /* ImportMIDIWindow.xib */,
+				C9D355ED12FF2DC60085F367 /* KeyboardWindow.xib */,
+				C95CA47E12FDCA23003DFA1B /* MainMenu.xib */,
+				C95CA48612FDCA43003DFA1B /* NXT_Band-Info.plist */,
+				C95CA47A12FDCA23003DFA1B /* RMDDocument.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C96E69C214EF419900C5B823 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				C96E69C414EF41B900C5B823 /* NSUndoManager+Blocks.h */,
+				C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		C9D093D814B610F800F052D5 /* NoteKit */ = {
+			isa = PBXGroup;
+			children = (
+				C9E89A2114B5394B0071074B /* MRNote.h */,
+				C98BEE9912FDD9E400A5904C /* MRNoteView.h */,
+				C98BEE9A12FDD9E400A5904C /* MRNoteView.m */,
+				C9FFFB2C1399984D0040A567 /* MRPianoRollView+Private.h */,
+				C95CA46812FDBFBC003DFA1B /* MRPianoRollView.h */,
+				C95CA46912FDBFBC003DFA1B /* MRPianoRollView.m */,
+			);
+			name = NoteKit;
+			sourceTree = "<group>";
+		};
+		C9D355E512FF2C660085F367 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C9D093D814B610F800F052D5 /* NoteKit */,
+				C90CA27612FDD5590010A90B /* FreqTable.c */,
+				C90CA27712FDD5590010A90B /* FreqTable.h */,
+				C95CA46D12FDC0D3003DFA1B /* RMDFile.h */,
+				C95CA46E12FDC0D3003DFA1B /* RMDFile.m */,
+				C926434614B92FE400EF9D57 /* RMDFile+Playback.h */,
+				C926434714B92FE400EF9D57 /* RMDFile+Playback.m */,
+				C926436314BA663E00EF9D57 /* RMDFile+Private.h */,
+				C95CA47012FDC4F8003DFA1B /* RMDNote.h */,
+				C95CA47112FDC4F8003DFA1B /* RMDNote.m */,
+			);
+			name = Core;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C9D355E612FF2C7A0085F367 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C9D355F012FF2E180085F367 /* AppDelegate.h */,
+				C9D355F112FF2E180085F367 /* AppDelegate.m */,
+				C96B6A0512FF6DBF0021CD2F /* ImportMIDIWindowController.h */,
+				C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */,
+				C9D355E712FF2D2C0085F367 /* KeyboardView.h */,
+				C9D355E812FF2D2C0085F367 /* KeyboardView.m */,
+				C9D355EA12FF2D5C0085F367 /* KeyboardWindowController.h */,
+				C9D355EB12FF2D5C0085F367 /* KeyboardWindowController.m */,
+				C95CA46412FDBF71003DFA1B /* RMDDocument.h */,
+				C95CA46512FDBF71003DFA1B /* RMDDocument.m */,
+			);
+			name = UI;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C95CA43E12FDB40B003DFA1B /* NXT Band */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C95CA46012FDB40B003DFA1B /* Build configuration list for PBXNativeTarget "NXT Band" */;
+			buildPhases = (
+				C95CA43B12FDB40B003DFA1B /* Sources */,
+				C95CA43C12FDB40B003DFA1B /* Frameworks */,
+				C95CA43D12FDB40B003DFA1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NXT Band";
+			productName = "NXT Band";
+			productReference = C95CA43F12FDB40B003DFA1B /* NXT Band.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C95CA43612FDB40B003DFA1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Matt Rajca";
+			};
+			buildConfigurationList = C95CA43912FDB40B003DFA1B /* Build configuration list for PBXProject "NXT Band" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C95CA43412FDB40B003DFA1B;
+			productRefGroup = C95CA44012FDB40B003DFA1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C95CA43E12FDB40B003DFA1B /* NXT Band */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C95CA43D12FDB40B003DFA1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C96B6A0312FF65470021CD2F /* ImportMIDIWindow.xib in Resources */,
+				C9D355EF12FF2DC60085F367 /* KeyboardWindow.xib in Resources */,
+				C95CA48212FDCA23003DFA1B /* MainMenu.xib in Resources */,
+				C926434C14B9334400EF9D57 /* Play.tiff in Resources */,
+				C95CA48012FDCA23003DFA1B /* RMDDocument.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C95CA43B12FDB40B003DFA1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9D355F212FF2E180085F367 /* AppDelegate.m in Sources */,
+				C90CA27812FDD55A0010A90B /* FreqTable.c in Sources */,
+				C96B6A0712FF6DBF0021CD2F /* ImportMIDIWindowController.m in Sources */,
+				C9D355E912FF2D2C0085F367 /* KeyboardView.m in Sources */,
+				C9D355EC12FF2D5C0085F367 /* KeyboardWindowController.m in Sources */,
+				C95CA48512FDCA35003DFA1B /* main.m in Sources */,
+				C98BEE9B12FDD9E400A5904C /* MRNoteView.m in Sources */,
+				C95CA46A12FDBFBC003DFA1B /* MRPianoRollView.m in Sources */,
+				C96E69C614EF41B900C5B823 /* NSUndoManager+Blocks.m in Sources */,
+				C95CA46612FDBF71003DFA1B /* RMDDocument.m in Sources */,
+				C95CA46F12FDC0D3003DFA1B /* RMDFile.m in Sources */,
+				C926434814B92FE400EF9D57 /* RMDFile+Playback.m in Sources */,
+				C95CA47212FDC4F8003DFA1B /* RMDNote.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C95CA47A12FDCA23003DFA1B /* RMDDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C95CA47B12FDCA23003DFA1B /* en */,
+			);
+			name = RMDDocument.xib;
+			sourceTree = "<group>";
+		};
+		C95CA47E12FDCA23003DFA1B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C95CA47F12FDCA23003DFA1B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		C96B6A0112FF65470021CD2F /* ImportMIDIWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C96B6A0212FF65470021CD2F /* en */,
+			);
+			name = ImportMIDIWindow.xib;
+			sourceTree = "<group>";
+		};
+		C9D355ED12FF2DC60085F367 /* KeyboardWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9D355EE12FF2DC60085F367 /* en */,
+			);
+			name = KeyboardWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C95CA45E12FDB40B003DFA1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C95CA45F12FDB40B003DFA1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C95CA46112FDB40B003DFA1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NXT_Band-Prefix.pch";
+				INFOPLIST_FILE = "Resources/NXT_Band-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C95CA46212FDB40B003DFA1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NXT_Band-Prefix.pch";
+				INFOPLIST_FILE = "Resources/NXT_Band-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C95CA43912FDB40B003DFA1B /* Build configuration list for PBXProject "NXT Band" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C95CA45E12FDB40B003DFA1B /* Debug */,
+				C95CA45F12FDB40B003DFA1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C95CA46012FDB40B003DFA1B /* Build configuration list for PBXNativeTarget "NXT Band" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C95CA46112FDB40B003DFA1B /* Debug */,
+				C95CA46212FDB40B003DFA1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C95CA43612FDB40B003DFA1B /* Project object */;
+}
