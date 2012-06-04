@@ -164,8 +164,8 @@
 #pragma mark -
 #pragma mark Note Controller
 
-- (void)addNotes:(NSArray *)notes {
-	[[self undoManager] groupUndoWithActionName:@"Add Notes" block:^(NSUndoManager *manager) {
+- (void)addNotes:(NSArray *)notes withActionName:(NSString *)actionName {
+	[[self undoManager] groupUndoWithActionName:actionName block:^(NSUndoManager *manager) {
 		
 		[_file addNotes:notes];
 		[_file sortNotesByTimestamp];
@@ -200,7 +200,7 @@
 	[[self undoManager] groupUndoWithActionName:actionName block:^(NSUndoManager *manager) {
 		
 		NSArray *notes = [_file.notes objectsAtIndexes:indices];
-		[manager registerUndoWithTarget:self selector:@selector(addNotes:) object:notes];
+		[[manager prepareWithInvocationTarget:self] addNotes:notes withActionName:@"Add Notes"];
 		
 		if (flag)
 			[_rollView deleteNotesAtIndices:indices];
@@ -276,7 +276,7 @@
 	NSDictionary *options = [NSDictionary dictionary];
 	
 	NSArray *notes = [[NSPasteboard generalPasteboard] readObjectsForClasses:classes options:options];
-	[self addNotes:notes];
+	[self addNotes:notes withActionName:@"Paste Notes"];
 	
 	NSIndexSet *set = [_file.notes indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
 		return [notes containsObject:obj];
