@@ -51,6 +51,8 @@
 												userInfo:nil
 												 repeats:YES];
 	
+	[[NSRunLoop currentRunLoop] addTimer:_reserved1 forMode:NSRunLoopCommonModes];
+	
 	[self didChangeValueForKey:@"isPlaying"];
 }
 
