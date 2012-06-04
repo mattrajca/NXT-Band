@@ -33,7 +33,7 @@
 #define NOTES 29
 #define WIDTH_LEEWAY 2000.0f
 
-@synthesize rollView = _rollView, infoField = _infoField;
+@synthesize rollView = _rollView, overlay = _overlay, infoField = _infoField;
 @synthesize file = _file;
 
 static uint64_t getUptimeInMilliseconds();
@@ -343,9 +343,13 @@ static uint64_t getUptimeInMilliseconds();
 												 selector:@selector(noteOff:)
 													 name:InputManagerNoteOffNotification
 												   object:nil];
+		
+		[_overlay setHidden:NO];
 	}
 	else {
 		// stop recording
+		[_overlay setHidden:YES];
+		
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
 		_recordStartTime = 0;
 		

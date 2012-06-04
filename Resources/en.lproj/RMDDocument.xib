@@ -11,17 +11,18 @@
 			<string key="NS.object.0">2182</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>NSTextField</string>
-			<string>NSView</string>
-			<string>NSScrollView</string>
-			<string>NSWindowTemplate</string>
-			<string>NSTextFieldCell</string>
-			<string>NSToolbarItem</string>
+			<string>NSCustomView</string>
 			<string>NSSegmentedControl</string>
 			<string>NSToolbar</string>
-			<string>NSSegmentedCell</string>
 			<string>NSScroller</string>
+			<string>NSScrollView</string>
+			<string>NSTextFieldCell</string>
 			<string>NSCustomObject</string>
+			<string>NSSegmentedCell</string>
+			<string>NSView</string>
+			<string>NSWindowTemplate</string>
+			<string>NSTextField</string>
+			<string>NSToolbarItem</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -133,7 +134,6 @@
 											<reference key="NSSuperview" ref="548568734"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="326688877"/>
-											<bool key="NSViewIsLayerTreeHost">YES</bool>
 											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 										</object>
 									</array>
@@ -170,7 +170,7 @@
 									<string key="NSFrame">{{0, 304}, {540, 15}}</string>
 									<reference key="NSSuperview" ref="870042628"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="753402540"/>
+									<reference key="NSNextKeyView" ref="727653354"/>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="870042628"/>
 									<string key="NSAction">_doScroller:</string>
@@ -185,6 +185,16 @@
 							<reference key="NSVScroller" ref="326688877"/>
 							<reference key="NSHScroller" ref="862068256"/>
 							<reference key="NSContentView" ref="548568734"/>
+						</object>
+						<object class="NSCustomView" id="727653354">
+							<reference key="NSNextResponder" ref="568628114"/>
+							<int key="NSvFlags">-2147483374</int>
+							<string key="NSFrame">{{0, 25}, {540, 319}}</string>
+							<reference key="NSSuperview" ref="568628114"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="753402540"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSClassName">RecordingOverlay</string>
 						</object>
 						<object class="NSTextField" id="753402540">
 							<reference key="NSNextResponder" ref="568628114"/>
@@ -312,6 +322,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">overlay</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="727653354"/>
+					</object>
+					<int key="connectionID">100045</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="275939982"/>
 						<reference key="destination" ref="512844837"/>
@@ -356,6 +374,7 @@
 							<reference ref="753402540"/>
 							<reference ref="870042628"/>
 							<reference ref="955451402"/>
+							<reference ref="727653354"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -436,6 +455,11 @@
 						<reference key="object" ref="615200042"/>
 						<reference key="parent" ref="2919741"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100044</int>
+						<reference key="object" ref="727653354"/>
+						<reference key="parent" ref="568628114"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -455,6 +479,7 @@
 				<integer value="0" key="100040.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="100040.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100042.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100044.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{133, 170}, {507, 413}}</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -463,7 +488,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100043</int>
+			<int key="maxID">100045</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -494,12 +519,17 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="infoField">NSTextField</string>
+						<string key="overlay">RecordingOverlay</string>
 						<string key="rollView">MRPianoRollView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="infoField">
 							<string key="name">infoField</string>
 							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="overlay">
+							<string key="name">overlay</string>
+							<string key="candidateClassName">RecordingOverlay</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="rollView">
 							<string key="name">rollView</string>
@@ -509,6 +539,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/RMDDocument.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RecordingOverlay</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RecordingOverlay.h</string>
 					</object>
 				</object>
 			</array>
