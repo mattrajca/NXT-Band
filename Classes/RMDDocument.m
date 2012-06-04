@@ -19,6 +19,7 @@
 - (void)setupRoll;
 
 - (BOOL)hasOverlappingNotes;
+- (void)checkForOverlappingNotes;
 
 @end
 
@@ -269,6 +270,8 @@ static uint64_t getUptimeInMilliseconds();
 			[_rollView reloadNoteAtIndex:index];
 		
 	}];
+	
+	[self checkForOverlappingNotes];
 }
 
 #pragma mark -
