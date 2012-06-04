@@ -45,7 +45,7 @@
 	
 	[self willChangeValueForKey:@"isPlaying"];
 	
-	_reserved1 = [NSTimer scheduledTimerWithTimeInterval:1.0
+	_reserved1 = [NSTimer scheduledTimerWithTimeInterval:0.125
 												  target:self
 												selector:@selector(checkPlayback:)
 												userInfo:nil
