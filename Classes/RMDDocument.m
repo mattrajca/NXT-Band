@@ -60,6 +60,9 @@ static uint64_t getUptimeInMilliseconds();
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+	if ([self isRecording])
+		return NO;
+	
 	if ([menuItem action] == @selector(copy:) || [menuItem action] == @selector(cut:)) {
 		return ([[_rollView selectedIndices] count] > 0);
 	}
@@ -360,9 +363,13 @@ static uint64_t getUptimeInMilliseconds();
 											   object:nil];
 	
 	[_overlay setHidden:NO];
+	
+	[[self windowForSheet] makeFirstResponder:_overlay];
 }
 
 - (void)stopRecording {
+	[[self windowForSheet] makeFirstResponder:_rollView];
+	
 	[_overlay setHidden:YES];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
