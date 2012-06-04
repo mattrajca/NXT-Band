@@ -7,9 +7,12 @@
 
 #import "RMDDocument.h"
 
+#import "InputManager.h"
 #import "NSUndoManager+Blocks.h"
 #import "RMDFile.h"
 #import "RMDFile+Playback.h"
+
+#import <mach/mach_time.h>
 
 @interface RMDDocument ()
 
@@ -20,13 +23,19 @@
 @end
 
 
-@implementation RMDDocument
+@implementation RMDDocument {
+	uint64_t _recordStartTime;
+	NSMutableArray *_recordedNotes;
+	RMDNote *_currentNote;
+}
 
 #define NOTES 29
 #define WIDTH_LEEWAY 2000.0f
 
 @synthesize rollView = _rollView, infoField = _infoField;
 @synthesize file = _file;
+
+static uint64_t getUptimeInMilliseconds();
 
 - (id)initWithType:(NSString *)typeName error:(NSError **)outError {
 	self = [super initWithType:typeName error:outError];
@@ -304,7 +313,54 @@
 }
 
 - (IBAction)record:(id)sender {
+	if (_recordStartTime == 0) {
+		// start recording
+		_recordStartTime = getUptimeInMilliseconds();
+		_recordedNotes = [NSMutableArray new];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(noteOn:)
+													 name:InputManagerNoteOnNotification
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(noteOff:)
+													 name:InputManagerNoteOffNotification
+												   object:nil];
+	}
+	else {
+		// stop recording
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		_recordStartTime = 0;
+		
+		[self addNotes:_recordedNotes withActionName:@"Recording"];
+		
+		_recordedNotes = nil;
+	}
+}
+
+#pragma mark -
+#pragma mark Recording
+
+- (void)noteOn:(NSNotification *)notification {
+	if (_recordStartTime == 0 || _currentNote != nil)
+		return;
 	
+#warning TODO: delegate time to sender
+	
+	_currentNote = [[RMDNote alloc] init];
+	_currentNote.timestamp = (getUptimeInMilliseconds() - _recordStartTime);
+	_currentNote.pitch = [[[notification userInfo] objectForKey:NoteValueKey] intValue];
+}
+
+- (void)noteOff:(NSNotification *)notification {
+	if (_recordStartTime == 0 || _currentNote == nil)
+		return;
+	
+	_currentNote.duration = getUptimeInMilliseconds() - _recordStartTime - _currentNote.timestamp;
+	
+	[_recordedNotes addObject:_currentNote];
+	_currentNote = nil;
 }
 
 #pragma mark -
@@ -342,6 +398,20 @@
 
 - (void)pianoRollView:(MRPianoRollView *)view deletedNotesAtIndices:(NSIndexSet *)indices {
 	[self removeNotesAtIndices:indices withActionName:@"Delete Notes" updateUI:NO];
+}
+
+#pragma mark -
+#pragma mark Utilities
+
+uint64_t getUptimeInMilliseconds() {
+	static const int64_t kOneMillion = 1000 * 1000;
+	static mach_timebase_info_data_t s_timebase_info;
+	
+	if (s_timebase_info.denom == 0) {
+		mach_timebase_info(&s_timebase_info);
+	}
+	
+	return ((mach_absolute_time() * s_timebase_info.numer) / (kOneMillion * s_timebase_info.denom));
 }
 
 #pragma mark -

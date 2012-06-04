@@ -23,6 +23,7 @@
 		C96B6A0712FF6DBF0021CD2F /* ImportMIDIWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */; };
 		C96B6A0912FF741A0021CD2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */; };
 		C96E567A157D3DCA004819E2 /* Record.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C96E5679157D3DCA004819E2 /* Record.tiff */; };
+		C96E567E157D4202004819E2 /* InputManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E567D157D4202004819E2 /* InputManager.m */; };
 		C96E69C614EF41B900C5B823 /* NSUndoManager+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */; };
 		C97B4C5F157C41DA00465AA0 /* Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C97B4C5E157C41DA00465AA0 /* Stop.tiff */; };
 		C98BEE9B12FDD9E400A5904C /* MRNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BEE9A12FDD9E400A5904C /* MRNoteView.m */; };
@@ -63,6 +64,8 @@
 		C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportMIDIWindowController.m; sourceTree = "<group>"; };
 		C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C96E5679157D3DCA004819E2 /* Record.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record.tiff; sourceTree = "<group>"; };
+		C96E567C157D4202004819E2 /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputManager.h; sourceTree = "<group>"; };
+		C96E567D157D4202004819E2 /* InputManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputManager.m; sourceTree = "<group>"; };
 		C96E69C414EF41B900C5B823 /* NSUndoManager+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUndoManager+Blocks.h"; path = "Classes/NSUndoManager+Blocks.h"; sourceTree = "<group>"; };
 		C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUndoManager+Blocks.m"; path = "Classes/NSUndoManager+Blocks.m"; sourceTree = "<group>"; };
 		C97B4C5E157C41DA00465AA0 /* Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Stop.tiff; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				C9D093D814B610F800F052D5 /* NoteKit */,
 				C90CA27612FDD5590010A90B /* FreqTable.c */,
 				C90CA27712FDD5590010A90B /* FreqTable.h */,
+				C96E567C157D4202004819E2 /* InputManager.h */,
+				C96E567D157D4202004819E2 /* InputManager.m */,
 				C95CA46D12FDC0D3003DFA1B /* RMDFile.h */,
 				C95CA46E12FDC0D3003DFA1B /* RMDFile.m */,
 				C926434614B92FE400EF9D57 /* RMDFile+Playback.h */,
@@ -307,6 +312,7 @@
 				C95CA46F12FDC0D3003DFA1B /* RMDFile.m in Sources */,
 				C926434814B92FE400EF9D57 /* RMDFile+Playback.m in Sources */,
 				C95CA47212FDC4F8003DFA1B /* RMDNote.m in Sources */,
+				C96E567E157D4202004819E2 /* InputManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

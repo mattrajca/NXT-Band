@@ -7,6 +7,8 @@
 
 #import "KeyboardWindowController.h"
 
+#import "InputManager.h"
+
 @implementation KeyboardWindowController
 
 @synthesize keyboardView = _keyboardView;
@@ -30,11 +32,11 @@
 }
 
 - (void)keyboardView:(KeyboardView *)keyboardView noteOn:(int)value {
-	NSLog(@"note on %d", value);
+	[[InputManager sharedManager] simulateNoteOn:value];
 }
 
 - (void)keyboardView:(KeyboardView *)keyboardView noteOff:(int)value {
-	NSLog(@"note off %d", value);
+	[[InputManager sharedManager] simulateNoteOff:value];
 }
 
 @end
