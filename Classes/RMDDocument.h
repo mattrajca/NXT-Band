@@ -16,6 +16,6 @@
 
 @property (nonatomic, strong) RMDFile *file;
 
-- (IBAction)play:(id)sender;
+- (IBAction)playStop:(id)sender;
 
 @end

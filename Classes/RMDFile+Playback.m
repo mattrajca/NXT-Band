@@ -43,20 +43,29 @@
 	MusicPlayerPreroll(_player);
 	MusicPlayerStart(_player);
 	
+	[self willChangeValueForKey:@"isPlaying"];
+	
 	_reserved1 = [NSTimer scheduledTimerWithTimeInterval:1.0
 												  target:self
 												selector:@selector(checkPlayback:)
 												userInfo:nil
 												 repeats:YES];
+	
+	[self didChangeValueForKey:@"isPlaying"];
 }
 
-- (void)checkPlayback:(NSTimer *)timer {
+- (BOOL)isPlaying {
+	return (_reserved1 != nil);
+}
+
+- (void)checkPlayback:(id)sender {
 	MusicTimeStamp outTime;
 	MusicPlayerGetTime(_player, &outTime);
 	
 	if (outTime > _lastNoteOffTimestamp) {
+		[self willChangeValueForKey:@"isPlaying"];
 		[self stop];
-		[timer invalidate];
+		[self didChangeValueForKey:@"isPlaying"];
 	}
 }
 

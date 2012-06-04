@@ -9,6 +9,8 @@
 
 @interface RMDFile (Playback)
 
+- (BOOL)isPlaying; // KVO-compliant
+
 - (void)play;
 - (void)stop;
 

@@ -32,12 +32,14 @@
 	self = [super initWithType:typeName error:outError];
 	if (self) {
 		_file = [[RMDFile alloc] init];
+		[_file addObserver:self forKeyPath:@"isPlaying" options:0 context:NULL];
 	}
 	return self;
 }
 
 - (void)dealloc {
 	[_file stop];
+	[_file removeObserver:self forKeyPath:@"isPlaying"];
 }
 
 #pragma mark -
@@ -75,6 +77,29 @@
 	[_rollView reloadData];
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString:@"isPlaying"]) {
+		[[[self windowForSheet] toolbar] validateVisibleItems];
+	}
+}
+
+- (BOOL)validateToolbarItem:(NSToolbarItem *)theItem {
+	if ([theItem action] == @selector(playStop:)) {
+		if ([_file isPlaying]) {
+			[theItem setImage:[NSImage imageNamed:@"Stop"]];
+			[theItem setLabel:@"Stop"];
+		}
+		else {
+			[theItem setImage:[NSImage imageNamed:@"Play"]];
+			[theItem setLabel:@"Play"];
+		}
+		
+		return YES;
+	}
+	
+	return NO;
+}
+
 #pragma mark -
 #pragma mark Saving/Opening
 
@@ -109,6 +134,8 @@
 	}
 	
 	[self setupRoll];
+	
+	[_file addObserver:self forKeyPath:@"isPlaying" options:0 context:NULL];
 	
 	return YES;
 }
@@ -220,8 +247,13 @@
 #pragma mark -
 #pragma mark UI Actions
 
-- (IBAction)play:(id)sender {
-	[_file play];
+- (IBAction)playStop:(id)sender {
+	if ([_file isPlaying]) {
+		[_file stop];
+	}
+	else {
+		[_file play];
+	}
 }
 
 - (IBAction)copy:(id)sender {
