@@ -107,6 +107,15 @@ static uint64_t getUptimeInMilliseconds();
 		return YES;
 	}
 	else if ([theItem action] == @selector(record:)) {
+		if (_recordStartTime > 0) {
+			[theItem setImage:[NSImage imageNamed:@"Stop"]];
+			[theItem setLabel:@"Stop"];
+		}
+		else {
+			[theItem setImage:[NSImage imageNamed:@"Record"]];
+			[theItem setLabel:@"Record"];
+		}
+		
 		return YES;
 	}
 	
@@ -340,6 +349,8 @@ static uint64_t getUptimeInMilliseconds();
 		
 		_recordedNotes = nil;
 	}
+	
+	[[[self windowForSheet] toolbar] validateVisibleItems];
 }
 
 #pragma mark -
