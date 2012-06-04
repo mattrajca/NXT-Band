@@ -5,10 +5,11 @@
 //  Copyright Matt Rajca 2011. All rights reserved.
 //
 
-@interface KeyboardWindowController : NSWindowController {
-  @private
-	
-}
+#import "KeyboardView.h"
+
+@interface KeyboardWindowController : NSWindowController < KeyboardViewDelegate >
+
+@property (nonatomic, unsafe_unretained) IBOutlet KeyboardView *keyboardView;
 
 + (id)sharedKeyboard;
 

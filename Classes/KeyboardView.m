@@ -39,6 +39,8 @@
 
 #define NOTES 29
 
+@synthesize delegate = _delegate;
+
 - (BOOL)isKeyBlack:(int)value {
 	int rem = value % WHITE_KEYS_IN_SCALE;
 	
@@ -98,6 +100,36 @@
 		if (!key.white)
 			NSRectFill(key.frame);
 	}
+}
+
+- (Key *)keyWithEvent:(NSEvent *)event {
+	NSPoint point = [self convertPoint:[event locationInWindow] fromView:nil];
+	
+	for (Key *key in _keys) {
+		if (!key.white && NSPointInRect(point, key.frame))
+			return key;
+	}
+	
+	for (Key *key in _keys) {
+		if (key.white && NSPointInRect(point, key.frame))
+			return key;
+	}
+	
+	return nil;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+	Key *key = [self keyWithEvent:theEvent];
+	
+	if (key)
+		[_delegate keyboardView:self noteOn:key.value];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+	Key *key = [self keyWithEvent:theEvent];
+	
+	if (key)
+		[_delegate keyboardView:self noteOff:key.value];
 }
 
 @end
