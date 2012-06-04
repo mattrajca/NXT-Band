@@ -104,7 +104,7 @@ static uint64_t getUptimeInMilliseconds();
 			[theItem setLabel:@"Play"];
 		}
 		
-		return YES;
+		return (_recordStartTime == 0);
 	}
 	else if ([theItem action] == @selector(record:)) {
 		if (_recordStartTime > 0) {
@@ -326,6 +326,10 @@ static uint64_t getUptimeInMilliseconds();
 
 - (IBAction)record:(id)sender {
 	if (_recordStartTime == 0) {
+		if ([_file isPlaying]) {
+			[_file stop];
+		}
+		
 		// start recording
 		_recordStartTime = getUptimeInMilliseconds();
 		_recordedNotes = [NSMutableArray new];
