@@ -9,7 +9,7 @@
 
 @interface MRPianoRollView ()
 
-- (void)changePitchOfSelectedNoteBy:(int)delta;
+- (void)changePitchOfSelectedNotesBy:(int)delta;
 
 - (void)deselectAllNotes;
 - (void)selectAllNotes;
@@ -18,6 +18,7 @@
 
 - (NSUInteger)indexOfNoteView:(MRNoteView *)noteView;
 - (MRNoteView *)noteViewForNoteAtIndex:(NSUInteger)index;
+- (NSArray *)noteViewsForNotesAtIndices:(NSIndexSet *)indices;
 - (MRNoteView *)closestNoteViewPastXPosition:(CGFloat)x;
 - (void)removeNoteViewsAtIndices:(NSIndexSet *)indices;
 - (NSRect)rectForNoteAtIndex:(NSUInteger)index;
@@ -131,20 +132,23 @@
 	noteView.frame = [self rectForNoteAtIndex:index];
 }
 
-- (void)changePitchOfSelectedNoteBy:(int)delta {
+- (void)changePitchOfSelectedNotesBy:(int)delta {
 	if (![_selectedIndices count]) {
 		NSBeep();
 		return;
 	}
 	
-	NSUInteger index = [_selectedIndices firstIndex];
-	id < MRNote > note = [_dataSource noteAtIndex:index];
-	MRNotePitch newPitch = note.pitch + delta;
-	
-	[_dataSource pianoRollView:self changedPitchOfNoteAtIndex:index to:newPitch];
-	
-	MRNoteView *noteView = [self noteViewForNoteAtIndex:index];
-	noteView.frame = [self rectForNoteAtIndex:index];
+	[_selectedIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+		
+		id < MRNote > note = [_dataSource noteAtIndex:idx];
+		MRNotePitch newPitch = note.pitch + delta;
+		
+		[_dataSource pianoRollView:self changedPitchOfNoteAtIndex:idx to:newPitch];
+		
+		MRNoteView *noteView = [self noteViewForNoteAtIndex:idx];
+		noteView.frame = [self rectForNoteAtIndex:idx];
+		
+	}];
 }
 
 - (void)deleteNotesAtIndices:(NSIndexSet *)indices {
@@ -243,11 +247,11 @@
 }
 
 - (void)moveUp:(id)sender {
-	[self changePitchOfSelectedNoteBy:1];
+	[self changePitchOfSelectedNotesBy:1];
 }
 
 - (void)moveDown:(id)sender {
-	[self changePitchOfSelectedNoteBy:-1];
+	[self changePitchOfSelectedNotesBy:-1];
 }
 
 - (void)selectAll:(id)sender {
@@ -286,6 +290,14 @@
 	[[self noteViewForNoteAtIndex:index] setSelected:YES];
 }
 
+- (void)selectNotesAtIndices:(NSIndexSet *)indices {
+	[_selectedIndices addIndexes:indices];
+	
+	for (MRNoteView *view in [self noteViewsForNotesAtIndices:indices]) {
+		[view setSelected:YES];
+	}
+}
+
 #pragma mark -
 #pragma mark Utility
 
@@ -295,6 +307,10 @@
 
 - (MRNoteView *)noteViewForNoteAtIndex:(NSUInteger)index {
 	return [[self subviews] objectAtIndex:index];
+}
+
+- (NSArray *)noteViewsForNotesAtIndices:(NSIndexSet *)indices {
+	return [[self subviews] objectsAtIndexes:indices];
 }
 
 - (MRNoteView *)closestNoteViewPastXPosition:(CGFloat)x {

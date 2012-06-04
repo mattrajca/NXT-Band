@@ -26,6 +26,8 @@
 - (void)reloadNoteAtIndex:(NSUInteger)index;
 - (void)deleteNotesAtIndices:(NSIndexSet *)indices;
 
+- (void)selectNotesAtIndices:(NSIndexSet *)indices;
+
 @end
 
 

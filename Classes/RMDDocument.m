@@ -276,7 +276,13 @@
 	NSDictionary *options = [NSDictionary dictionary];
 	
 	NSArray *notes = [[NSPasteboard generalPasteboard] readObjectsForClasses:classes options:options];
-	NSLog(@"%@", notes);
+	[self addNotes:notes];
+	
+	NSIndexSet *set = [_file.notes indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		return [notes containsObject:obj];
+	}];
+	
+	[_rollView selectNotesAtIndices:set];
 }
 
 #pragma mark -
