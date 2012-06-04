@@ -38,6 +38,7 @@
 
 - (void)pianoRollView:(MRPianoRollView *)view changedDurationOfNoteAtIndex:(NSUInteger)index to:(MRTimeInterval)duration;
 - (void)pianoRollView:(MRPianoRollView *)view changedPitchOfNoteAtIndex:(NSUInteger)index to:(MRNotePitch)pitch;
+- (void)pianoRollView:(MRPianoRollView *)view changedTimestampOfNoteAtIndex:(NSUInteger)index to:(MRTimeInterval)timestamp;
 
 - (void)pianoRollView:(MRPianoRollView *)view insertedNoteAtIndex:(NSUInteger)index withTimestamp:(MRTimeInterval)timestamp duration:(MRTimeInterval)duration pitch:(MRNotePitch)pitch;
 - (void)pianoRollView:(MRPianoRollView *)view deletedNotesAtIndices:(NSIndexSet *)indices;

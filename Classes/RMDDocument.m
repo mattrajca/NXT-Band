@@ -244,6 +244,21 @@
 	}];
 }
 
+- (void)changeTimestampOfNoteAtIndex:(NSUInteger)index to:(MRTimeInterval)timestamp updateUI:(BOOL)flag {
+	RMDNote *note = [_file.notes objectAtIndex:index];
+	
+	[[self undoManager] groupUndoWithActionName:@"Change Timestamp" block:^(NSUndoManager *manager) {
+		
+		[[manager prepareWithInvocationTarget:self] changeTimestampOfNoteAtIndex:index to:note.timestamp updateUI:YES];
+		
+		note.timestamp = timestamp;
+		
+		if (flag)
+			[_rollView reloadNoteAtIndex:index];
+		
+	}];
+}
+
 #pragma mark -
 #pragma mark UI Actions
 
@@ -302,6 +317,10 @@
 
 - (void)pianoRollView:(MRPianoRollView *)view changedPitchOfNoteAtIndex:(NSUInteger)index to:(MRNotePitch)pitch {
 	[self changePitchOfNoteAtIndex:index to:pitch updateUI:NO];
+}
+
+- (void)pianoRollView:(MRPianoRollView *)view changedTimestampOfNoteAtIndex:(NSUInteger)index to:(MRTimeInterval)timestamp {
+	[self changeTimestampOfNoteAtIndex:index to:timestamp updateUI:NO];
 }
 
 - (void)pianoRollView:(MRPianoRollView *)view insertedNoteAtIndex:(NSUInteger)index withTimestamp:(MRTimeInterval)timestamp duration:(MRTimeInterval)duration pitch:(MRNotePitch)pitch {

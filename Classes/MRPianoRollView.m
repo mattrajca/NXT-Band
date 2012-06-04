@@ -10,6 +10,7 @@
 @interface MRPianoRollView ()
 
 - (void)changePitchOfSelectedNotesBy:(int)delta;
+- (void)changeTimestampOfSelectedNotesBy:(int)delta;
 
 - (void)deselectAllNotes;
 - (void)selectAllNotes;
@@ -151,6 +152,25 @@
 	}];
 }
 
+- (void)changeTimestampOfSelectedNotesBy:(int)delta {
+	if (![_selectedIndices count]) {
+		NSBeep();
+		return;
+	}
+	
+	[_selectedIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+		
+		id < MRNote > note = [_dataSource noteAtIndex:idx];
+		MRTimeInterval newTS = note.timestamp + delta;
+		
+		[_dataSource pianoRollView:self changedTimestampOfNoteAtIndex:idx to:newTS];
+		
+		MRNoteView *noteView = [self noteViewForNoteAtIndex:idx];
+		noteView.frame = [self rectForNoteAtIndex:idx];
+		
+	}];
+}
+
 - (void)deleteNotesAtIndices:(NSIndexSet *)indices {
 	[self removeNoteViewsAtIndices:indices];
 	
@@ -252,6 +272,14 @@
 
 - (void)moveDown:(id)sender {
 	[self changePitchOfSelectedNotesBy:-1];
+}
+
+- (void)moveLeft:(id)sender {
+	[self changeTimestampOfSelectedNotesBy:-200];
+}
+
+- (void)moveRight:(id)sender {
+	[self changeTimestampOfSelectedNotesBy:200];
 }
 
 - (void)selectAll:(id)sender {
