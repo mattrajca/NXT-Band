@@ -107,7 +107,7 @@ static uint64_t getUptimeInMilliseconds();
 		return (_recordStartTime == 0);
 	}
 	else if ([theItem action] == @selector(record:)) {
-		if (_recordStartTime > 0) {
+		if ([self isRecording]) {
 			[theItem setImage:[NSImage imageNamed:@"Stop"]];
 			[theItem setLabel:@"Stop"];
 		}
@@ -325,37 +325,11 @@ static uint64_t getUptimeInMilliseconds();
 }
 
 - (IBAction)record:(id)sender {
-	if (_recordStartTime == 0) {
-		if ([_file isPlaying]) {
-			[_file stop];
-		}
-		
-		// start recording
-		_recordStartTime = getUptimeInMilliseconds();
-		_recordedNotes = [NSMutableArray new];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(noteOn:)
-													 name:InputManagerNoteOnNotification
-												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(noteOff:)
-													 name:InputManagerNoteOffNotification
-												   object:nil];
-		
-		[_overlay setHidden:NO];
+	if (![self isRecording]) {
+		[self startRecording];
 	}
 	else {
-		// stop recording
-		[_overlay setHidden:YES];
-		
-		[[NSNotificationCenter defaultCenter] removeObserver:self];
-		_recordStartTime = 0;
-		
-		[self addNotes:_recordedNotes withActionName:@"Recording"];
-		
-		_recordedNotes = nil;
+		[self stopRecording];
 	}
 	
 	[[[self windowForSheet] toolbar] validateVisibleItems];
@@ -364,8 +338,43 @@ static uint64_t getUptimeInMilliseconds();
 #pragma mark -
 #pragma mark Recording
 
+- (BOOL)isRecording {
+	return (_recordStartTime > 0);
+}
+
+- (void)startRecording {
+	if ([_file isPlaying])
+		[_file stop];
+	
+	_recordStartTime = getUptimeInMilliseconds();
+	_recordedNotes = [NSMutableArray new];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(noteOn:)
+												 name:InputManagerNoteOnNotification
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(noteOff:)
+												 name:InputManagerNoteOffNotification
+											   object:nil];
+	
+	[_overlay setHidden:NO];
+}
+
+- (void)stopRecording {
+	[_overlay setHidden:YES];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	_recordStartTime = 0;
+	
+	[self addNotes:_recordedNotes withActionName:@"Recording"];
+	
+	_recordedNotes = nil;
+}
+
 - (void)noteOn:(NSNotification *)notification {
-	if (_recordStartTime == 0 || _currentNote != nil)
+	if (![self isRecording] || _currentNote != nil)
 		return;
 	
 #warning TODO: delegate time to sender
@@ -376,7 +385,7 @@ static uint64_t getUptimeInMilliseconds();
 }
 
 - (void)noteOff:(NSNotification *)notification {
-	if (_recordStartTime == 0 || _currentNote == nil)
+	if (![self isRecording] || _currentNote == nil)
 		return;
 	
 	_currentNote.duration = getUptimeInMilliseconds() - _recordStartTime - _currentNote.timestamp;
