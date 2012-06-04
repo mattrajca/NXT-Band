@@ -22,6 +22,7 @@
 		C96B6A0312FF65470021CD2F /* ImportMIDIWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96B6A0112FF65470021CD2F /* ImportMIDIWindow.xib */; };
 		C96B6A0712FF6DBF0021CD2F /* ImportMIDIWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */; };
 		C96B6A0912FF741A0021CD2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */; };
+		C96E567A157D3DCA004819E2 /* Record.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C96E5679157D3DCA004819E2 /* Record.tiff */; };
 		C96E69C614EF41B900C5B823 /* NSUndoManager+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */; };
 		C97B4C5F157C41DA00465AA0 /* Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C97B4C5E157C41DA00465AA0 /* Stop.tiff */; };
 		C98BEE9B12FDD9E400A5904C /* MRNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BEE9A12FDD9E400A5904C /* MRNoteView.m */; };
@@ -61,6 +62,7 @@
 		C96B6A0512FF6DBF0021CD2F /* ImportMIDIWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportMIDIWindowController.h; sourceTree = "<group>"; };
 		C96B6A0612FF6DBF0021CD2F /* ImportMIDIWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportMIDIWindowController.m; sourceTree = "<group>"; };
 		C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C96E5679157D3DCA004819E2 /* Record.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Record.tiff; sourceTree = "<group>"; };
 		C96E69C414EF41B900C5B823 /* NSUndoManager+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUndoManager+Blocks.h"; path = "Classes/NSUndoManager+Blocks.h"; sourceTree = "<group>"; };
 		C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUndoManager+Blocks.m"; path = "Classes/NSUndoManager+Blocks.m"; sourceTree = "<group>"; };
 		C97B4C5E157C41DA00465AA0 /* Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Stop.tiff; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				C926434B14B9334400EF9D57 /* Play.tiff */,
+				C96E5679157D3DCA004819E2 /* Record.tiff */,
 				C97B4C5E157C41DA00465AA0 /* Stop.tiff */,
 			);
 			name = Icons;
@@ -280,6 +283,7 @@
 				C926434C14B9334400EF9D57 /* Play.tiff in Resources */,
 				C95CA48012FDCA23003DFA1B /* RMDDocument.xib in Resources */,
 				C97B4C5F157C41DA00465AA0 /* Stop.tiff in Resources */,
+				C96E567A157D3DCA004819E2 /* Record.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

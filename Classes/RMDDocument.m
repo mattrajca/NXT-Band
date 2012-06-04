@@ -96,6 +96,9 @@
 		
 		return YES;
 	}
+	else if ([theItem action] == @selector(record:)) {
+		return YES;
+	}
 	
 	return NO;
 }
@@ -298,6 +301,10 @@
 	}];
 	
 	[_rollView selectNotesAtIndices:set];
+}
+
+- (IBAction)record:(id)sender {
+	
 }
 
 #pragma mark -
