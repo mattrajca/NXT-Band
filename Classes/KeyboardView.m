@@ -26,6 +26,7 @@
 
 @implementation KeyboardView {
 	NSMutableArray *_keys;
+	Key *_selectedKey;
 }
 
 #define BLACK_KEY_OFFSET 14.0f
@@ -87,18 +88,28 @@
 	[[NSColor colorWithCalibratedWhite:0.4f alpha:1.0f] set];
 	NSRectFill([self bounds]);
 	
-	[[NSColor whiteColor] set];
-	
 	for (Key *key in _keys) {
-		if (key.white)
+		if (key.white) {
+			[[NSColor whiteColor] set];
 			NSRectFill(key.frame);
+			
+			if (key == _selectedKey) {
+				[[NSColor blueColor] set];
+				NSRectFill(key.frame);
+			}
+		}
 	}
 	
-	[[NSColor blackColor] set];
-	
 	for (Key *key in _keys) {
-		if (!key.white)
+		if (!key.white) {
+			[[NSColor blackColor] set];
 			NSRectFill(key.frame);
+			
+			if (key == _selectedKey) {
+				[[NSColor blueColor] set];
+				NSRectFill(NSInsetRect(key.frame, 2.0f, 2.0f));
+			}
+		}
 	}
 }
 
@@ -119,17 +130,21 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-	Key *key = [self keyWithEvent:theEvent];
+	_selectedKey = [self keyWithEvent:theEvent];
 	
-	if (key)
-		[_delegate keyboardView:self noteOn:key.value];
+	if (_selectedKey)
+		[_delegate keyboardView:self noteOn:_selectedKey.value];
+	
+	[self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-	Key *key = [self keyWithEvent:theEvent];
+	if (_selectedKey) {
+		[_delegate keyboardView:self noteOff:_selectedKey.value];
+		_selectedKey = nil;
+	}
 	
-	if (key)
-		[_delegate keyboardView:self noteOff:key.value];
+	[self setNeedsDisplay:YES];
 }
 
 @end
