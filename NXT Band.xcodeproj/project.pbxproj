@@ -27,6 +27,7 @@
 		C96E5681157D5727004819E2 /* RecordingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5680157D5727004819E2 /* RecordingOverlay.m */; };
 		C96E69C614EF41B900C5B823 /* NSUndoManager+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */; };
 		C97B4C5F157C41DA00465AA0 /* Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C97B4C5E157C41DA00465AA0 /* Stop.tiff */; };
+		C988CB9F15812E1400D1DA38 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988CB9E15812E1400D1DA38 /* CoreMIDI.framework */; };
 		C98BEE9B12FDD9E400A5904C /* MRNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BEE9A12FDD9E400A5904C /* MRNoteView.m */; };
 		C9C2C62E158018DA00C5CFE1 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C2C62D158018DA00C5CFE1 /* AudioUnit.framework */; };
 		C9D355E912FF2D2C0085F367 /* KeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D355E812FF2D2C0085F367 /* KeyboardView.m */; };
@@ -73,6 +74,7 @@
 		C96E69C414EF41B900C5B823 /* NSUndoManager+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUndoManager+Blocks.h"; path = "Classes/NSUndoManager+Blocks.h"; sourceTree = "<group>"; };
 		C96E69C514EF41B900C5B823 /* NSUndoManager+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUndoManager+Blocks.m"; path = "Classes/NSUndoManager+Blocks.m"; sourceTree = "<group>"; };
 		C97B4C5E157C41DA00465AA0 /* Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Stop.tiff; sourceTree = "<group>"; };
+		C988CB9E15812E1400D1DA38 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		C98BEE9912FDD9E400A5904C /* MRNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNoteView.h; sourceTree = "<group>"; };
 		C98BEE9A12FDD9E400A5904C /* MRNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNoteView.m; sourceTree = "<group>"; };
 		C9C2C62D158018DA00C5CFE1 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -95,6 +97,7 @@
 				C96B6A0912FF741A0021CD2F /* AudioToolbox.framework in Frameworks */,
 				C9C2C62E158018DA00C5CFE1 /* AudioUnit.framework in Frameworks */,
 				C95CA44412FDB40B003DFA1B /* Cocoa.framework in Frameworks */,
+				C988CB9F15812E1400D1DA38 /* CoreMIDI.framework in Frameworks */,
 				C95CA46C12FDC01E003DFA1B /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +142,7 @@
 				C96B6A0812FF741A0021CD2F /* AudioToolbox.framework */,
 				C9C2C62D158018DA00C5CFE1 /* AudioUnit.framework */,
 				C95CA44312FDB40B003DFA1B /* Cocoa.framework */,
+				C988CB9E15812E1400D1DA38 /* CoreMIDI.framework */,
 				C95CA46B12FDC01E003DFA1B /* QuartzCore.framework */,
 				C95CA44512FDB40B003DFA1B /* Other Frameworks */,
 			);

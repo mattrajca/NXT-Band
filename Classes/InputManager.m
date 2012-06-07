@@ -8,6 +8,7 @@
 #import "InputManager.h"
 
 #import <AudioToolbox/AudioToolbox.h>
+#import <CoreMIDI/CoreMIDI.h>
 
 NSString *const InputManagerNoteOnNotification = @"InputManagerNoteOnNotification";
 NSString *const InputManagerNoteOffNotification = @"InputManagerNoteOffNotification";
@@ -17,7 +18,12 @@ NSString *const NoteValueKey = @"NoteValueKey";
 @implementation InputManager {
 	AUGraph _graph;
 	AudioUnit _synthUnit;
+	
+	MIDIClientRef _client;
+	MIDIPortRef _inputPort;
 }
+
+void InputProc (const MIDIPacketList *pktlist, void *readProcRefCon, void *srcConnRefCon);
 
 + (id)sharedManager {
 	static InputManager *sharedManager = nil;
@@ -40,6 +46,10 @@ NSString *const NoteValueKey = @"NoteValueKey";
 		else {
 			NSLog(@"Could not set up audio graph");
 		}
+		
+		if (![self checkForMIDISources]) {
+			NSLog(@"Could not check for MIDI sources");
+		}
 	}
 	return self;
 }
@@ -49,6 +59,12 @@ NSString *const NoteValueKey = @"NoteValueKey";
 		AUGraphStop(_graph);
 		DisposeAUGraph(_graph);
 	}
+	
+	if (_inputPort)
+		MIDIPortDispose(_inputPort);
+	
+	if (_client)
+		MIDIClientDispose(_client);
 }
 
 - (BOOL)setUpAudioGraph {
@@ -103,8 +119,53 @@ home:
 	return NO;
 }
 
+- (BOOL)checkForMIDISources {
+	ItemCount sources = MIDIGetNumberOfSources();
+	
+	if (!sources) {
+		NSLog(@"No MIDI sources found");
+		return YES;
+	}
+	
+	OSStatus result;
+	MIDIEndpointRef endpoint = MIDIGetSource(0);
+	
+	//FIXME: set a notifyProc?
+	require_noerr (result = MIDIClientCreate(CFSTR("InputManager"), NULL, NULL, &_client), home);
+	
+	require_noerr (result = MIDIInputPortCreate(_client, CFSTR("input"), InputProc, (__bridge void *) self, &_inputPort), home);
+	
+	require_noerr (result = MIDIPortConnectSource(_inputPort, endpoint, (__bridge void *) self), home);
+	
+	return YES;
+	
+home:
+	return NO;
+}
+
+void InputProc (const MIDIPacketList *pktlist, void *readProcRefCon, void *srcConnRefCon) {
+	@autoreleasepool {
+		InputManager *self = (__bridge InputManager *) readProcRefCon;
+		
+		for (int n = 0; n < pktlist->numPackets; n++) {
+			MIDIPacket packet = pktlist->packet[n];
+			
+			if (packet.data[0] == 0x90) {
+				Byte velocity = packet.data[2];
+				
+				if (velocity == 0) {
+					[self simulateNoteOff:packet.data[1]];
+				}
+				else {
+					[self simulateNoteOn:packet.data[1]];
+				}
+			}
+		}
+	}
+}
+
 - (void)simulateNoteOn:(int)value {
-	MusicDeviceMIDIEvent(_synthUnit, 0x90, 60 + value, 127, 0);
+	MusicDeviceMIDIEvent(_synthUnit, 0x90, value, 127, 0);
 	
 	NSDictionary *info = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:value] forKey:NoteValueKey];
 	
@@ -114,7 +175,7 @@ home:
 }
 
 - (void)simulateNoteOff:(int)value {
-	MusicDeviceMIDIEvent(_synthUnit, 0x80, 60 + value, 0, 0);
+	MusicDeviceMIDIEvent(_synthUnit, 0x80, value, 0, 0);
 	
 	NSDictionary *info = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:value] forKey:NoteValueKey];
 	

@@ -32,11 +32,11 @@
 }
 
 - (void)keyboardView:(KeyboardView *)keyboardView noteOn:(int)value {
-	[[InputManager sharedManager] simulateNoteOn:value];
+	[[InputManager sharedManager] simulateNoteOn:60+value];
 }
 
 - (void)keyboardView:(KeyboardView *)keyboardView noteOff:(int)value {
-	[[InputManager sharedManager] simulateNoteOff:value];
+	[[InputManager sharedManager] simulateNoteOff:60+value];
 }
 
 @end

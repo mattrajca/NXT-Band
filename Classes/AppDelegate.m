@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 
 #import "ImportMIDIWindowController.h"
+#import "InputManager.h"
 #import "KeyboardWindowController.h"
 #import "RMDDocument.h"
 
@@ -15,6 +16,10 @@
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
 	return NO;
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+	[InputManager sharedManager]; // so we can process MIDI sources
 }
 
 - (IBAction)importMIDI:(id)sender {
