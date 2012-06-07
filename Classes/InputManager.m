@@ -20,9 +20,11 @@ NSString *const NoteValueKey = @"NoteValueKey";
 	AudioUnit _synthUnit;
 	
 	MIDIClientRef _client;
+	MIDIEndpointRef _source;
 	MIDIPortRef _inputPort;
 }
 
+void ClientProc (const MIDINotification *message, void *refCon);
 void InputProc (const MIDIPacketList *pktlist, void *readProcRefCon, void *srcConnRefCon);
 
 + (id)sharedManager {
@@ -65,6 +67,9 @@ void InputProc (const MIDIPacketList *pktlist, void *readProcRefCon, void *srcCo
 	
 	if (_client)
 		MIDIClientDispose(_client);
+	
+	if (_source)
+		MIDIEndpointDispose(_source);
 }
 
 - (BOOL)setUpAudioGraph {
@@ -120,6 +125,10 @@ home:
 }
 
 - (BOOL)checkForMIDISources {
+	OSStatus result;
+	require_noerr (result = MIDIClientCreate(CFSTR("InputManager"), ClientProc, (__bridge void *) self, &_client), home);
+	require_noerr (result = MIDIInputPortCreate(_client, CFSTR("input"), InputProc, (__bridge void *) self, &_inputPort), home);
+	
 	ItemCount sources = MIDIGetNumberOfSources();
 	
 	if (!sources) {
@@ -127,20 +136,54 @@ home:
 		return YES;
 	}
 	
+	_source = MIDIGetSource(0);
+	
+	return [self setupSource];
+	
+home:
+	return NO;
+}
+
+- (MIDIEndpointRef)source {
+	return _source;
+}
+
+- (void)setSource:(MIDIEndpointRef)child {
+	_source = child;
+}
+
+- (BOOL)setupSource {
 	OSStatus result;
-	MIDIEndpointRef endpoint = MIDIGetSource(0);
-	
-	//FIXME: set a notifyProc?
-	require_noerr (result = MIDIClientCreate(CFSTR("InputManager"), NULL, NULL, &_client), home);
-	
-	require_noerr (result = MIDIInputPortCreate(_client, CFSTR("input"), InputProc, (__bridge void *) self, &_inputPort), home);
-	
-	require_noerr (result = MIDIPortConnectSource(_inputPort, endpoint, (__bridge void *) self), home);
+	require_noerr (result = MIDIPortConnectSource(_inputPort, _source, (__bridge void *) self), home);
 	
 	return YES;
 	
 home:
 	return NO;
+}
+
+- (void)disposeSource {
+	MIDIPortDisconnectSource(_inputPort, _source);
+	_source = 0;
+}
+
+void ClientProc (const MIDINotification *message, void *refCon) {
+	InputManager *self = (__bridge InputManager *) refCon;
+	
+	if (message->messageID == kMIDIMsgObjectRemoved) {
+		const MIDIObjectAddRemoveNotification *removeMessage = (MIDIObjectAddRemoveNotification *) message;
+		
+		if (removeMessage->childType == kMIDIObjectType_Source && removeMessage->child == [self source])
+			[self disposeSource];
+	}
+	else if (message->messageID == kMIDIMsgObjectAdded) {
+		const MIDIObjectAddRemoveNotification *addMessage = (MIDIObjectAddRemoveNotification *) message;
+		
+		if (addMessage->childType == kMIDIObjectType_Source) {
+			[self setSource:addMessage->child];
+			[self setupSource];
+		}
+	}
 }
 
 void InputProc (const MIDIPacketList *pktlist, void *readProcRefCon, void *srcConnRefCon) {
