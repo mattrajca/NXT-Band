@@ -384,11 +384,16 @@ static uint64_t getUptimeInMilliseconds();
 	if (![self isRecording] || _currentNote != nil)
 		return;
 	
+	int value = [[[notification userInfo] objectForKey:NoteValueKey] intValue];
+	
+	if (value < 60 || value > 89)
+		return;
+	
 #warning TODO: delegate time to sender
 	
 	_currentNote = [[RMDNote alloc] init];
 	_currentNote.timestamp = (getUptimeInMilliseconds() - _recordStartTime);
-	_currentNote.pitch = [[[notification userInfo] objectForKey:NoteValueKey] intValue];
+	_currentNote.pitch = value - 60;
 }
 
 - (void)noteOff:(NSNotification *)notification {
