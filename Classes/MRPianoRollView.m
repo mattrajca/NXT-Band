@@ -224,7 +224,7 @@
 		MRNoteView *view = [[MRNoteView alloc] initWithFrame:_notePlaceholderRect];
 		MRNoteView *relativeView = [self closestNoteViewPastXPosition:NSMinX(_notePlaceholderRect)];
 		
-		[self addSubview:view positioned:NSWindowBelow relativeTo:relativeView];
+		[self addSubview:view positioned:NSWindowAbove relativeTo:relativeView];
 		
 		NSUInteger index = [[self subviews] indexOfObject:view];
 		NSUInteger currentNoteCount = [_dataSource numberOfNotesInPianoRollView:self];
@@ -342,9 +342,26 @@
 }
 
 - (MRNoteView *)closestNoteViewPastXPosition:(CGFloat)x {
-	for (MRNoteView *view in [self subviews]) {
-		if (view.frame.origin.x >= x)
-			return view;
+	NSArray *subviews = [self subviews];
+	
+	if ([subviews count] == 0)
+		return nil;
+	
+	if ([subviews count] == 1) {
+		MRNoteView *currentView = [subviews objectAtIndex:0];
+		
+		if (currentView.frame.origin.x < x)
+			return currentView;
+		else
+			return nil;
+	}
+	
+	for (NSUInteger n = 0; n < [subviews count] - 1; n++) {
+		MRNoteView *currentView = [subviews objectAtIndex:n];
+		MRNoteView *nextView = [subviews objectAtIndex:n+1];
+		
+		if (currentView.frame.origin.x < x && nextView.frame.origin.x > x)
+			return currentView;
 	}
 	
 	return nil;
