@@ -13,5 +13,8 @@
 
 - (void)pr_selectedNoteView:(MRNoteView *)noteView;
 - (void)pr_changedNoteViewWidth:(MRNoteView *)noteView;
+- (void)pr_changedNoteViewY:(MRNoteView *)noteView;
+
+- (CGFloat)gridAlignedYPosition:(CGFloat)y;
 
 @end

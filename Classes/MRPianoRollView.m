@@ -23,7 +23,6 @@
 - (MRNoteView *)closestNoteViewPastXPosition:(CGFloat)x;
 - (void)removeNoteViewsAtIndices:(NSIndexSet *)indices;
 - (NSRect)rectForNoteAtIndex:(NSUInteger)index;
-- (CGFloat)gridAlignedYPosition:(CGFloat)y;
 
 @end
 
@@ -390,6 +389,10 @@
 	return floorf(y / NOTE_LINE_HEIGHT) * NOTE_LINE_HEIGHT;
 }
 
+- (MRNotePitch)pitchOfNoteView:(MRNoteView *)view {
+	return floorf(view.frame.origin.y / NOTE_LINE_HEIGHT);
+}
+
 #pragma mark -
 #pragma mark Private
 
@@ -415,6 +418,13 @@
 	MRTimeInterval newDuration = (MRTimeInterval) (noteView.bounds.size.width / TIMESCALE);
 	
 	[_dataSource pianoRollView:self changedDurationOfNoteAtIndex:index to:newDuration];
+}
+
+- (void)pr_changedNoteViewY:(MRNoteView *)noteView {
+	NSUInteger index = [self indexOfNoteView:noteView];
+	MRNotePitch newPitch = [self pitchOfNoteView:noteView];
+	
+	[_dataSource pianoRollView:self changedPitchOfNoteAtIndex:index to:newPitch];
 }
 
 #pragma mark -

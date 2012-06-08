@@ -12,7 +12,7 @@
 @implementation MRNoteView {
 	NSPoint _lastMouseLocation;
 	NSRect _resizeHandleRect;
-	BOOL _resizing;
+	BOOL _resizing, _dragged;
 }
 
 #define RESIZE_HANDLE_WIDTH 5.0f
@@ -59,8 +59,9 @@
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
+	NSPoint location = [[self pianoRollView] convertPoint:[theEvent locationInWindow] fromView:nil];
+	
 	if (_resizing) {
-		NSPoint location = [[self pianoRollView] convertPoint:[theEvent locationInWindow] fromView:nil];
 		CGFloat deltaX = location.x - _lastMouseLocation.x;
 		_lastMouseLocation = location;
 		
@@ -74,6 +75,15 @@
 		[self setFrameSize:frameSize];
 		[self setNeedsDisplay:YES];
 	}
+	else {
+		// dragging?
+		NSRect frame = [self frame];
+		frame.origin.y = [[self pianoRollView] gridAlignedYPosition:location.y];
+		
+		[self setFrame:frame];
+		
+		_dragged = YES;
+	}
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
@@ -82,6 +92,13 @@
 		
 		[[self pianoRollView] pr_changedNoteViewWidth:self];
 		[[self window] invalidateCursorRectsForView:self];
+		
+		return;
+	}
+	else if (_dragged) {
+		_dragged = NO;
+		
+		[[self pianoRollView] pr_changedNoteViewY:self];
 		
 		return;
 	}
