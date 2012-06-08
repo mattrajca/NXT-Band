@@ -18,7 +18,7 @@ static NSString *const kPitchKey = @"pitch";
 @synthesize timestamp = _timestamp, duration = _duration, pitch = _pitch;
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<RMDNote 0x%x | duration=%d, pitch=%d>",
+	return [NSString stringWithFormat:@"<RMDNote 0x%x | duration=%lld, pitch=%d>",
 			self, self.duration, self.pitch];
 }
 
