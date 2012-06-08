@@ -211,7 +211,7 @@
 	CGFloat x = [self convertPoint:[theEvent locationInWindow] fromView:nil].x;
 	
 	_drawingNotePlaceholder = YES;
-	_notePlaceholderRect.size.width = x - NSMinX(_notePlaceholderRect);
+	_notePlaceholderRect.size.width = MAX(x - NSMinX(_notePlaceholderRect), 5);
 	
 	[self setNeedsDisplay:YES];
 }
