@@ -33,6 +33,9 @@
 #define NOTES 29
 #define WIDTH_LEEWAY 2000.0f
 
+#define SELECT_TOOL 0
+#define PENCIL_TOOL 1
+
 @synthesize rollView = _rollView, overlay = _overlay, infoField = _infoField;
 @synthesize file = _file;
 
@@ -336,6 +339,15 @@ static uint64_t getUptimeInMilliseconds();
 	}
 	
 	[[[self windowForSheet] toolbar] validateVisibleItems];
+}
+
+- (IBAction)switchTool:(id)sender {
+	if ([sender selectedSegment] == PENCIL_TOOL) {
+		_rollView.allowsNoteCreation = YES;
+	}
+	else if ([sender selectedSegment] == SELECT_TOOL) {
+		_rollView.allowsNoteCreation = NO;
+	}
 }
 
 #pragma mark -

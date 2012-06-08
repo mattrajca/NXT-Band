@@ -21,4 +21,6 @@
 - (IBAction)playStop:(id)sender;
 - (IBAction)record:(id)sender;
 
+- (IBAction)switchTool:(id)sender;
+
 @end
