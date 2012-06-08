@@ -63,7 +63,6 @@
 	
 	if (_resizing) {
 		CGFloat deltaX = location.x - _lastMouseLocation.x;
-		_lastMouseLocation = location;
 		
 		NSSize frameSize = [self frame].size;
 		frameSize.width += deltaX;
@@ -78,12 +77,15 @@
 	else {
 		// dragging?
 		NSRect frame = [self frame];
+		frame.origin.x += (location.x - _lastMouseLocation.x);
 		frame.origin.y = [[self pianoRollView] gridAlignedYPosition:location.y];
 		
 		[self setFrame:frame];
 		
 		_dragged = YES;
 	}
+	
+	_lastMouseLocation = location;
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
@@ -98,6 +100,7 @@
 	else if (_dragged) {
 		_dragged = NO;
 		
+		[[self pianoRollView] pr_changedNoteViewX:self];
 		[[self pianoRollView] pr_changedNoteViewY:self];
 		
 		return;

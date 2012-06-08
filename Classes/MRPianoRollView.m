@@ -420,6 +420,13 @@
 	[_dataSource pianoRollView:self changedDurationOfNoteAtIndex:index to:newDuration];
 }
 
+- (void)pr_changedNoteViewX:(MRNoteView *)noteView {
+	NSUInteger index = [self indexOfNoteView:noteView];
+	MRTimeInterval newTimestamp = (MRTimeInterval) (noteView.frame.origin.x / TIMESCALE);
+	
+	[_dataSource pianoRollView:self changedTimestampOfNoteAtIndex:index to:newTimestamp];
+}
+
 - (void)pr_changedNoteViewY:(MRNoteView *)noteView {
 	NSUInteger index = [self indexOfNoteView:noteView];
 	MRNotePitch newPitch = [self pitchOfNoteView:noteView];
