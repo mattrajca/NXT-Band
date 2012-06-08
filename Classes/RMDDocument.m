@@ -63,17 +63,38 @@ static uint64_t getUptimeInMilliseconds();
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-	if ([self isRecording])
-		return NO;
-	
 	if ([menuItem action] == @selector(copy:) || [menuItem action] == @selector(cut:)) {
+		if ([self isRecording]) return NO;
+		
 		return ([[_rollView selectedIndices] count] > 0);
 	}
 	else if ([menuItem action] == @selector(paste:)) {
+		if ([self isRecording]) return NO;
+		
 		NSArray *classes = [NSArray arrayWithObject:[RMDNote class]];
 		NSDictionary *options = [NSDictionary dictionary];
 		
 		return [[NSPasteboard generalPasteboard] canReadObjectForClasses:classes options:options];
+	}
+	else if ([menuItem action] == @selector(playStop:)) {
+		if ([_file isPlaying]) {
+			[menuItem setTitle:@"Stop"];
+		}
+		else {
+			[menuItem setTitle:@"Play"];
+		}
+		
+		return (_recordStartTime == 0);
+	}
+	else if ([menuItem action] == @selector(record:)) {
+		if ([self isRecording]) {
+			[menuItem setTitle:@"Stop Recording"];
+		}
+		else {
+			[menuItem setTitle:@"Record"];
+		}
+		
+		return YES;
 	}
 	
 	return [super validateMenuItem:menuItem];
