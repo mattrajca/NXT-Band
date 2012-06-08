@@ -18,6 +18,8 @@
 #define RESIZE_HANDLE_WIDTH 5.0f
 #define SELECTION_INSET 2.0f
 
+#define NOTE_LINE_HEIGHT 11.0f
+
 @synthesize selected = _selected;
 
 - (MRPianoRollView *)pianoRollView {
@@ -79,6 +81,9 @@
 		NSRect frame = [self frame];
 		frame.origin.x += (location.x - _lastMouseLocation.x);
 		frame.origin.y = [[self pianoRollView] gridAlignedYPosition:location.y];
+		
+		frame.origin.x = MAX(frame.origin.x, 0);
+		frame.origin.y = MAX(MIN(frame.origin.y, 28 * NOTE_LINE_HEIGHT), 0);
 		
 		[self setFrame:frame];
 		
