@@ -30,4 +30,8 @@
 	[text drawInRect:NSInsetRect([self bounds], 20.0f, 120.0f) withAttributes:attributes];
 }
 
+- (void)mouseDown:(NSEvent *)theEvent { }
+- (void)mouseDragged:(NSEvent *)theEvent { }
+- (void)mouseUp:(NSEvent *)theEvent { }
+
 @end
