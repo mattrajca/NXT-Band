@@ -141,7 +141,10 @@
 	[_selectedIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
 		
 		id < MRNote > note = [_dataSource noteAtIndex:idx];
-		MRNotePitch newPitch = note.pitch + delta;
+		int newPitch = note.pitch + delta;
+		
+		if (newPitch >= 29 || newPitch < 0)
+			return;
 		
 		[_dataSource pianoRollView:self changedPitchOfNoteAtIndex:idx to:newPitch];
 		
@@ -160,7 +163,10 @@
 	[_selectedIndices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
 		
 		id < MRNote > note = [_dataSource noteAtIndex:idx];
-		MRTimeInterval newTS = note.timestamp + delta;
+		int64_t newTS = note.timestamp + delta;
+		
+		if (newTS < 0)
+			return;
 		
 		[_dataSource pianoRollView:self changedTimestampOfNoteAtIndex:idx to:newTS];
 		
