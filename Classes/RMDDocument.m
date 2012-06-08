@@ -58,6 +58,10 @@ static uint64_t getUptimeInMilliseconds();
 #pragma mark -
 #pragma mark UI
 
++ (BOOL)autosavesInPlace {
+	return YES;
+}
+
 - (NSString *)windowNibName {
 	return @"RMDDocument";
 }
