@@ -322,6 +322,10 @@ static uint64_t getUptimeInMilliseconds();
 #pragma mark -
 #pragma mark UI Actions
 
+- (void)handleSpacebar:(NSEvent *)event {
+	[self playStop:nil];
+}
+
 - (IBAction)playStop:(id)sender {
 	if ([_file isPlaying]) {
 		[_file stop];

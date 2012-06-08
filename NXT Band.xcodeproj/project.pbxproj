@@ -30,6 +30,7 @@
 		C988CB9F15812E1400D1DA38 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988CB9E15812E1400D1DA38 /* CoreMIDI.framework */; };
 		C98BEE9B12FDD9E400A5904C /* MRNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BEE9A12FDD9E400A5904C /* MRNoteView.m */; };
 		C9C2C62E158018DA00C5CFE1 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C2C62D158018DA00C5CFE1 /* AudioUnit.framework */; };
+		C9C8E1DC1582A17100CCB391 /* SpaceApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1DB1582A17100CCB391 /* SpaceApplication.m */; };
 		C9D355E912FF2D2C0085F367 /* KeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D355E812FF2D2C0085F367 /* KeyboardView.m */; };
 		C9D355EC12FF2D5C0085F367 /* KeyboardWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D355EB12FF2D5C0085F367 /* KeyboardWindowController.m */; };
 		C9D355EF12FF2DC60085F367 /* KeyboardWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D355ED12FF2DC60085F367 /* KeyboardWindow.xib */; };
@@ -78,6 +79,8 @@
 		C98BEE9912FDD9E400A5904C /* MRNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNoteView.h; sourceTree = "<group>"; };
 		C98BEE9A12FDD9E400A5904C /* MRNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNoteView.m; sourceTree = "<group>"; };
 		C9C2C62D158018DA00C5CFE1 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		C9C8E1DA1582A17100CCB391 /* SpaceApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceApplication.h; sourceTree = "<group>"; };
+		C9C8E1DB1582A17100CCB391 /* SpaceApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceApplication.m; sourceTree = "<group>"; };
 		C9D355E712FF2D2C0085F367 /* KeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardView.h; sourceTree = "<group>"; };
 		C9D355E812FF2D2C0085F367 /* KeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardView.m; sourceTree = "<group>"; };
 		C9D355EA12FF2D5C0085F367 /* KeyboardWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardWindowController.h; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 				C96E5680157D5727004819E2 /* RecordingOverlay.m */,
 				C95CA46412FDBF71003DFA1B /* RMDDocument.h */,
 				C95CA46512FDBF71003DFA1B /* RMDDocument.m */,
+				C9C8E1DA1582A17100CCB391 /* SpaceApplication.h */,
+				C9C8E1DB1582A17100CCB391 /* SpaceApplication.m */,
 			);
 			name = UI;
 			path = Classes;
@@ -327,6 +332,7 @@
 				C95CA47212FDC4F8003DFA1B /* RMDNote.m in Sources */,
 				C96E567E157D4202004819E2 /* InputManager.m in Sources */,
 				C96E5681157D5727004819E2 /* RecordingOverlay.m in Sources */,
+				C9C8E1DC1582A17100CCB391 /* SpaceApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
