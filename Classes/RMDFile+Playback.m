@@ -72,6 +72,9 @@
 }
 
 - (void)stop {
+	if (![self isPlaying])
+		return;
+	
 	[_reserved1 invalidate];
 	_reserved1 = nil;
 	

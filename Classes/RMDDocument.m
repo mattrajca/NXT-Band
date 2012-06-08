@@ -152,6 +152,11 @@ static uint64_t getUptimeInMilliseconds();
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
+	if (_file) {
+		[_file stop];
+		[_file removeObserver:self forKeyPath:@"isPlaying"];
+	}
+	
 	_file = [[RMDFile alloc] initWithData:data];
 	
 	if (!_file) {
