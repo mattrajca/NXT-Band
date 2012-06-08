@@ -36,7 +36,7 @@
 #define SELECT_TOOL 0
 #define PENCIL_TOOL 1
 
-@synthesize rollView = _rollView, overlay = _overlay, infoField = _infoField;
+@synthesize rollView = _rollView, overlay = _overlay, infoField = _infoField, toolSwitcher = _toolSwitcher;
 @synthesize file = _file;
 
 static uint64_t getUptimeInMilliseconds();
@@ -369,11 +369,23 @@ static uint64_t getUptimeInMilliseconds();
 
 - (IBAction)switchTool:(id)sender {
 	if ([sender selectedSegment] == PENCIL_TOOL) {
-		_rollView.allowsNoteCreation = YES;
+		[self activatePencilTool:nil];
 	}
 	else if ([sender selectedSegment] == SELECT_TOOL) {
-		_rollView.allowsNoteCreation = NO;
+		[self activateSelectTool:nil];
 	}
+}
+
+- (IBAction)activateSelectTool:(id)sender {
+	[_toolSwitcher selectSegmentWithTag:0];
+	
+	_rollView.allowsNoteCreation = NO;
+}
+
+- (IBAction)activatePencilTool:(id)sender {
+	[_toolSwitcher selectSegmentWithTag:1];
+	
+	_rollView.allowsNoteCreation = YES;
 }
 
 #pragma mark -

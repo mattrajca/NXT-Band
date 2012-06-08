@@ -15,6 +15,7 @@
 @property (nonatomic, unsafe_unretained) IBOutlet MRPianoRollView *rollView;
 @property (nonatomic, unsafe_unretained) IBOutlet RecordingOverlay *overlay;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextField *infoField;
+@property (nonatomic, unsafe_unretained) IBOutlet NSSegmentedControl *toolSwitcher;
 
 @property (nonatomic, strong) RMDFile *file;
 
@@ -22,5 +23,8 @@
 - (IBAction)record:(id)sender;
 
 - (IBAction)switchTool:(id)sender;
+
+- (IBAction)activateSelectTool:(id)sender;
+- (IBAction)activatePencilTool:(id)sender;
 
 @end
