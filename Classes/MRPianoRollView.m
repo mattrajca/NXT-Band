@@ -423,6 +423,9 @@
 	NSUInteger index = [self indexOfNoteView:noteView];
 	MRTimeInterval newDuration = (MRTimeInterval) (noteView.bounds.size.width / TIMESCALE);
 	
+	if ([[_dataSource noteAtIndex:index] duration] == newDuration)
+		return;
+	
 	[_dataSource pianoRollView:self changedDurationOfNoteAtIndex:index to:newDuration];
 }
 
@@ -430,12 +433,18 @@
 	NSUInteger index = [self indexOfNoteView:noteView];
 	MRTimeInterval newTimestamp = (MRTimeInterval) (noteView.frame.origin.x / TIMESCALE);
 	
+	if ([[_dataSource noteAtIndex:index] timestamp] == newTimestamp)
+		return;
+	
 	[_dataSource pianoRollView:self changedTimestampOfNoteAtIndex:index to:newTimestamp];
 }
 
 - (void)pr_changedNoteViewY:(MRNoteView *)noteView {
 	NSUInteger index = [self indexOfNoteView:noteView];
 	MRNotePitch newPitch = [self pitchOfNoteView:noteView];
+	
+	if ([[_dataSource noteAtIndex:index] pitch] == newPitch)
+		return;
 	
 	[_dataSource pianoRollView:self changedPitchOfNoteAtIndex:index to:newPitch];
 }
