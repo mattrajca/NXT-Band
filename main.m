@@ -2,7 +2,7 @@
 //  main.m
 //  NXT Band
 //
-//  Copyright Matt Rajca 2011. All rights reserved.
+//  Copyright Matt Rajca 2011-2012. All rights reserved.
 //
 
 int main (int argc, char *argv[]) {
